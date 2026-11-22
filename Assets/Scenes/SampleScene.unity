@@ -535,7 +535,11 @@ MonoBehaviour:
         m_SelectedSource:
           rid: -2
         m_Provider2DCache:
-          rid: -2
+          rid: 5393166615855759440
+    - rid: 5393166615855759440
+      type: {class: 'Provider2DCache`1[[UnityEngine.Rendering.Universal.Light2DProvider, Unity.RenderPipelines.Universal.2D.Runtime]]', ns: UnityEngine.Rendering.Universal, asm: Unity.RenderPipelines.Universal.2D.Runtime}
+      data:
+        m_Cache: []
 --- !u!4 &619394802
 Transform:
   m_ObjectHideFlags: 0
@@ -809,11 +813,11 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 2530425107346226091, guid: aa5267cca50a6d94aa0c7e5a351d3fbb, type: 3}
       propertyPath: m_LocalPosition.x
-      value: 0
+      value: 0.69
       objectReference: {fileID: 0}
     - target: {fileID: 2530425107346226091, guid: aa5267cca50a6d94aa0c7e5a351d3fbb, type: 3}
       propertyPath: m_LocalPosition.y
-      value: 0
+      value: -1.47
       objectReference: {fileID: 0}
     - target: {fileID: 2530425107346226091, guid: aa5267cca50a6d94aa0c7e5a351d3fbb, type: 3}
       propertyPath: m_LocalPosition.z
