@@ -377,7 +377,7 @@ baru.
 -   **Estimasi:** 3--5 jam
 -   **Peran yang disarankan:** Gameplay
 -   **Dependensi:** TP-005
--   **Status:** Not Started
+-   **Status:** Done
 
 **Tujuan:** Memungkinkan pemain menggerakkan ikan ke empat arah
 menggunakan keyboard.
