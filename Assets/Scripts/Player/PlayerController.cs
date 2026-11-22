@@ -17,7 +17,7 @@ public class PlayerController : MonoBehaviour
         }
     }
 
-    private void FixedUpdate()
+    private void Update()
     {
         float horizontal =
             Input.GetKey(KeyCode.A) ? -1f :
@@ -44,6 +44,8 @@ public class PlayerController : MonoBehaviour
             spriteRenderer.flipX = false;
         }
 
-        rigidbody2D.linearVelocity = movement * moveSpeed;
+        transform.position += (Vector3)(movement * moveSpeed * Time.deltaTime);
+
+        rigidbody2D.linearVelocity = Vector2.zero;
     }
 }
