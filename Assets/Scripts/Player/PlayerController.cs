@@ -44,8 +44,8 @@ public class PlayerController : MonoBehaviour
             spriteRenderer.flipX = false;
         }
 
-        transform.position += (Vector3)(movement * moveSpeed * Time.deltaTime);
-
-        rigidbody2D.linearVelocity = Vector2.zero;
+        transform.Translate(
+            (Vector3)(movement * moveSpeed * Time.deltaTime),
+            Space.World);
     }
 }
