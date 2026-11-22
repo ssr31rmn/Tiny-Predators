@@ -19,9 +19,17 @@ public class PlayerController : MonoBehaviour
 
     private void FixedUpdate()
     {
-        Vector2 input = new Vector2(
-            Input.GetAxisRaw("Horizontal"),
-            Input.GetAxisRaw("Vertical"));
+        float horizontal =
+            Input.GetKey(KeyCode.A) ? -1f :
+            Input.GetKey(KeyCode.D) ? 1f :
+            Input.GetAxisRaw("Horizontal");
+
+        float vertical =
+            Input.GetKey(KeyCode.S) ? -1f :
+            Input.GetKey(KeyCode.W) ? 1f :
+            Input.GetAxisRaw("Vertical");
+
+        Vector2 input = new Vector2(horizontal, vertical);
 
         Vector2 movement = input.sqrMagnitude > 1f
             ? input.normalized
@@ -36,9 +44,6 @@ public class PlayerController : MonoBehaviour
             spriteRenderer.flipX = false;
         }
 
-        Vector2 nextPosition = rigidbody2D.position +
-            movement * moveSpeed * Time.fixedDeltaTime;
-
-        rigidbody2D.MovePosition(nextPosition);
+        rigidbody2D.linearVelocity = movement * moveSpeed;
     }
 }
