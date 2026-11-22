@@ -445,7 +445,7 @@ gerakan. - Collider dan ukuran fisik tetap konsisten.
 -   **Estimasi:** 1--2 jam
 -   **Peran yang disarankan:** Gameplay / AI & World
 -   **Dependensi:** TP-006
--   **Status:** Not Started
+-   **Status:** Done
 
 **Tujuan:** Mencegah Player keluar dari arena.
 
