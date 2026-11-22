@@ -175,7 +175,7 @@ control, dan aturan kerja tim.
 -   **Estimasi:** 1--2 jam
 -   **Peran yang disarankan:** UI & Integration
 -   **Dependensi:** Tidak ada
--   **Status:** Not Started
+-   **Status:** Done
 
 **Tujuan:** Memastikan proyek Unity yang sudah dibuat siap digunakan
 sebagai basis pengembangan.
@@ -211,7 +211,7 @@ dijalankan. - Tidak ada error kompilasi yang belum ditangani.
 -   **Estimasi:** 1 jam
 -   **Peran yang disarankan:** UI & Integration
 -   **Dependensi:** TP-001
--   **Status:** Not Started
+-   **Status:** Done
 
 **Tujuan:** Menjaga aset dan script tetap terorganisasi.
 
@@ -264,7 +264,7 @@ dipahami. - Aset bawaan template tetap aman.
 -   **Estimasi:** 2--3 jam
 -   **Peran yang disarankan:** UI & Integration
 -   **Dependensi:** TP-001
--   **Status:** Not Started
+-   **Status:** Done
 
 **Tujuan:** Memungkinkan tiga anggota tim bekerja pada proyek yang sama
 dengan riwayat perubahan yang dapat ditinjau.
@@ -303,7 +303,7 @@ disepakati.
 -   **Estimasi:** 1--2 jam
 -   **Peran yang disarankan:** Seluruh anggota
 -   **Dependensi:** TP-003
--   **Status:** Not Started
+-   **Status:** Done
 
 **Tujuan:** Menghindari konflik pekerjaan dan perubahan yang tidak
 disetujui.
@@ -342,7 +342,7 @@ batas gerak, dan dapat menerima interaksi gameplay.
 -   **Estimasi:** 1--2 jam
 -   **Peran yang disarankan:** Gameplay
 -   **Dependensi:** TP-001, TP-002
--   **Status:** Not Started
+-   **Status:** Done
 
 **Tujuan:** Membuat objek Player sebagai entitas utama game.
 
@@ -377,7 +377,7 @@ baru.
 -   **Estimasi:** 3--5 jam
 -   **Peran yang disarankan:** Gameplay
 -   **Dependensi:** TP-005
--   **Status:** Not Started
+-   **Status:** Done
 
 **Tujuan:** Memungkinkan pemain menggerakkan ikan ke empat arah
 menggunakan keyboard.
@@ -415,7 +415,7 @@ input. - Gerakan stabil dan tidak menghasilkan error.
 -   **Estimasi:** 1--2 jam
 -   **Peran yang disarankan:** Gameplay
 -   **Dependensi:** TP-006
--   **Status:** Not Started
+-   **Status:** Done
 
 **Tujuan:** Membuat arah visual Player mengikuti arah gerakan.
 
@@ -445,7 +445,7 @@ gerakan. - Collider dan ukuran fisik tetap konsisten.
 -   **Estimasi:** 1--2 jam
 -   **Peran yang disarankan:** Gameplay / AI & World
 -   **Dependensi:** TP-006
--   **Status:** Not Started
+-   **Status:** Done
 
 **Tujuan:** Mencegah Player keluar dari arena.
 
