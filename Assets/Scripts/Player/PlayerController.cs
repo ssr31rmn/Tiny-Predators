@@ -4,12 +4,17 @@ using UnityEngine;
 public class PlayerController : MonoBehaviour
 {
     [SerializeField] private float moveSpeed = 5f;
+    [SerializeField] private SpriteRenderer spriteRenderer;
 
     private Rigidbody2D rigidbody2D;
 
     private void Awake()
     {
         rigidbody2D = GetComponent<Rigidbody2D>();
+        if (spriteRenderer == null)
+        {
+            spriteRenderer = GetComponent<SpriteRenderer>();
+        }
     }
 
     private void FixedUpdate()
@@ -21,6 +26,15 @@ public class PlayerController : MonoBehaviour
         Vector2 movement = input.sqrMagnitude > 1f
             ? input.normalized
             : input;
+
+        if (movement.x < 0f)
+        {
+            spriteRenderer.flipX = true;
+        }
+        else if (movement.x > 0f)
+        {
+            spriteRenderer.flipX = false;
+        }
 
         Vector2 nextPosition = rigidbody2D.position +
             movement * moveSpeed * Time.fixedDeltaTime;

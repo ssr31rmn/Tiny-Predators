@@ -415,7 +415,7 @@ input. - Gerakan stabil dan tidak menghasilkan error.
 -   **Estimasi:** 1--2 jam
 -   **Peran yang disarankan:** Gameplay
 -   **Dependensi:** TP-006
--   **Status:** Not Started
+-   **Status:** Done
 
 **Tujuan:** Membuat arah visual Player mengikuti arah gerakan.
 
