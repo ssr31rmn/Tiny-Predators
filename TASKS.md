@@ -342,7 +342,7 @@ batas gerak, dan dapat menerima interaksi gameplay.
 -   **Estimasi:** 1--2 jam
 -   **Peran yang disarankan:** Gameplay
 -   **Dependensi:** TP-001, TP-002
--   **Status:** Not Started
+-   **Status:** Done
 
 **Tujuan:** Membuat objek Player sebagai entitas utama game.
 
