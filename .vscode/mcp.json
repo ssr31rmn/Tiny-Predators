@@ -1,0 +1,12 @@
+{
+  "servers": {
+    "unity": {
+      "type": "stdio",
+      "command": "C:\\Users\\LOQ\\AppData\\Local\\Unity\\bin\\unity.exe",
+      "args": [
+        "mcp",
+        "--tool-groups"
+      ]
+    }
+  }
+}
