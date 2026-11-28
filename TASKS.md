@@ -483,7 +483,7 @@ berbagai jenis ikan.
 -   **Estimasi:** 2--3 jam
 -   **Peran yang disarankan:** AI & World
 -   **Dependensi:** TP-002
--   **Status:** Not Started
+-   **Status:** Done
 
 **Tujuan:** Membuat komponen dasar yang dapat digunakan oleh berbagai
 jenis ikan.
@@ -519,7 +519,8 @@ dapat dikonfigurasi dan diuji.
 -   **Estimasi:** 2--4 jam
 -   **Peran yang disarankan:** AI & World
 -   **Dependensi:** TP-009
--   **Status:** Not Started
+-   **Status:** Done
+-   **Catatan:** Nilai `sizeLevel`, `scoreValue`, `moveSpeed`, dan skala visual pada prefab adalah baseline sementara untuk pengujian, bukan balancing final.
 
 **Tujuan:** Menyediakan prefab untuk tiga kategori ikan non-player.
 
@@ -552,7 +553,8 @@ dasar yang diperlukan.
 -   **Estimasi:** 2--3 jam
 -   **Peran yang disarankan:** Gameplay
 -   **Dependensi:** TP-009, TP-010
--   **Status:** Not Started
+-   **Status:** Done
+-   **Catatan:** Aturan perbandingan terpusat tersedia melalui `FishSizeRules.CanEat(...)`. Nilai Player awal `sizeLevel = 2` adalah baseline sementara dan dapat berubah saat pertumbuhan diimplementasikan.
 
 **Tujuan:** Menetapkan aturan perbandingan ukuran yang konsisten untuk
 interaksi makan.
@@ -581,7 +583,8 @@ bergantung pada skala visual.
 -   **Estimasi:** 2--4 jam
 -   **Peran yang disarankan:** AI & World
 -   **Dependensi:** TP-010
--   **Status:** Not Started
+-   **Status:** Done
+-   **Catatan:** `FishMovement` menggunakan Rigidbody2D, arah acak berkala, pembalikan visual, dan pantulan dari collider arena. Komponen ini terpasang pada ketiga prefab ikan.
 
 **Tujuan:** Membuat ikan dapat bergerak tanpa input pemain.
 
@@ -618,7 +621,8 @@ skor sebagai inti permainan.
 -   **Estimasi:** 3--4 jam
 -   **Peran yang disarankan:** Gameplay
 -   **Dependensi:** TP-006, TP-011, TP-012
--   **Status:** Not Started
+-   **Status:** Done
+-   **Catatan:** `FishInteractionDetector` mendukung collision biasa dan trigger, menyimpan ikan yang terdeteksi, dan mengembalikan hubungan ukuran Player terhadap ikan. Belum memengaruhi skor, pertumbuhan, atau objek ikan; proses makan dilanjutkan pada TP-014.
 
 **Tujuan:** Mendeteksi ketika Player atau ikan lain bersentuhan dengan
 target yang dapat dimakan.
@@ -652,7 +656,8 @@ ukuran diterapkan. - Target tidak diproses berulang kali.
 -   **Estimasi:** 2--3 jam
 -   **Peran yang disarankan:** Gameplay
 -   **Dependensi:** TP-013
--   **Status:** Not Started
+-   **Status:** Done
+-   **Catatan:** `Fish.TryConsume()` adalah jalur terpusat yang mencegah pemrosesan ganda, memicu event `Consumed`, menonaktifkan target, lalu menghancurkannya. `FishInteractionDetector` memanggil jalur ini hanya untuk ukuran Player yang lebih besar.
 
 **Tujuan:** Menghapus atau menonaktifkan ikan yang berhasil dimakan dan
 meneruskan informasi hasil interaksi.

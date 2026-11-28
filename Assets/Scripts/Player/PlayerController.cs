@@ -5,8 +5,11 @@ public class PlayerController : MonoBehaviour
 {
     [SerializeField] private float moveSpeed = 5f;
     [SerializeField] private SpriteRenderer spriteRenderer;
+    [SerializeField, Min(0)] private int sizeLevel = 2;
 
     private Rigidbody2D rigidbody2D;
+
+    public int SizeLevel => sizeLevel;
 
     private void Awake()
     {
@@ -35,13 +38,16 @@ public class PlayerController : MonoBehaviour
             ? input.normalized
             : input;
 
-        if (movement.x < 0f)
+        if (spriteRenderer != null)
         {
-            spriteRenderer.flipX = true;
-        }
-        else if (movement.x > 0f)
-        {
-            spriteRenderer.flipX = false;
+            if (movement.x < 0f)
+            {
+                spriteRenderer.flipX = true;
+            }
+            else if (movement.x > 0f)
+            {
+                spriteRenderer.flipX = false;
+            }
         }
 
         transform.Translate(
