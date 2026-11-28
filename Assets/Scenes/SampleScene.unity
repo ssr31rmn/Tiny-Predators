@@ -310,6 +310,64 @@ BoxCollider2D:
   m_AutoTiling: 0
   m_Size: {x: 1, y: 1}
   m_EdgeRadius: 0
+--- !u!1 &488214272
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 488214273}
+  - component: {fileID: 488214274}
+  m_Layer: 0
+  m_Name: FishSpawner
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &488214273
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 488214272}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &488214274
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 488214272}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 1bfa09a5e0384fb1b89fb1ad7fb5372e, type: 3}
+  m_Name: ""
+  m_EditorClassIdentifier: Assembly-CSharp::FishSpawner
+  smallFishPrefab: {fileID: 9068556522060888196, guid: 1ff855d8d4a1fd04798d0623fc4e90b5, type: 3}
+  mediumFishPrefab: {fileID: 8949585375171233908, guid: f5cfaf46f8e6c314f9d838fa318fba40, type: 3}
+  predatorPrefab: {fileID: 3802860303599339290, guid: 3c4721692fd4ea342a1ff6f8bf6ed913, type: 3}
+  smallFishWeight: 60
+  mediumFishWeight: 30
+  predatorWeight: 10
+  initialFishCount: 8
+  maximumFishCount: 16
+  spawnInterval: 2.5
+  spawnAreaMinimum: {x: -8, y: -4.5}
+  spawnAreaMaximum: {x: 8, y: 4.5}
+  minimumDistanceFromPlayer: 2
+  minimumSeparationRadius: 0.8
+  placementAttempts: 20
 --- !u!1 &519420028
 GameObject:
   m_ObjectHideFlags: 0
@@ -869,3 +927,4 @@ SceneRoots:
   - {fileID: 4019288770378772156}
   - {fileID: 185668601}
   - {fileID: 1558310665}
+  - {fileID: 488214273}

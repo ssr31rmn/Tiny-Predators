@@ -188,4 +188,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::FishMovement
   directionChangeInterval: 2.5
+  fleeDetectionRadius: 3.5
+  fleeSpeed: 2.5
+  threatCheckInterval: 0.25
   spriteRenderer: {fileID: 15775829361053532}

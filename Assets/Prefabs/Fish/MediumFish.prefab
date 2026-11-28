@@ -14,6 +14,7 @@ GameObject:
   - component: {fileID: 5603118717082269828}
   - component: {fileID: 8651277101868092827}
   - component: {fileID: 6101000000000000002}
+  - component: {fileID: 6101000000000000004}
   m_Layer: 0
   m_Name: MediumFish
   m_TagString: Untagged
@@ -169,7 +170,7 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: e19a62622547e7e42b73a16d215f851f, type: 3}
-  m_Name: 
+  m_Name:
   m_EditorClassIdentifier: Assembly-CSharp::Fish
   category: 1
   sizeLevel: 2
@@ -189,3 +190,18 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::FishMovement
   directionChangeInterval: 2.5
   spriteRenderer: {fileID: 1916148787771615378}
+--- !u!114 &6101000000000000004
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8949585375171233908}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a73b2b1d93c54f6e8ed1c27a5c4d9f03, type: 3}
+  m_Name: ""
+  m_EditorClassIdentifier: Assembly-CSharp::MediumFishAI
+  detectionRadius: 5
+  chaseSpeed: 3
+  targetCheckInterval: 0.25

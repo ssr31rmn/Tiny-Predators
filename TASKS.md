@@ -789,7 +789,8 @@ jumlah ikan di arena.
 -   **Estimasi:** 3--4 jam
 -   **Peran yang disarankan:** AI & World
 -   **Dependensi:** TP-012, TP-013
--   **Status:** Not Started
+-   **Status:** Done
+-   **Catatan:** Small Fish memakai query ancaman Physics2D berkala, flee dari Player hidup atau ikan yang lebih besar, lalu kembali wander saat ancaman tak terdeteksi. Radius 3.5, kecepatan flee 2.5, dan interval cek 0.25 detik adalah nilai sementara untuk prototipe.
 
 **Tujuan:** Small Fish bergerak bebas dan berusaha menjauh ketika ada
 ancaman yang lebih besar.
@@ -823,7 +824,8 @@ arena.
 -   **Estimasi:** 3--4 jam
 -   **Peran yang disarankan:** AI & World
 -   **Dependensi:** TP-012, TP-013, TP-011
--   **Status:** Not Started
+-   **Status:** In Progress
+-   **Catatan:** Implementasi chase memakai detection radius 5, chase speed 3, dan interval scan 0.25 detik sebagai baseline sementara. Perlu verifikasi Play Mode sebelum task ditandai Done.
 
 **Tujuan:** Medium Fish bergerak bebas dan mengejar ikan yang lebih
 kecil ketika target berada dalam jangkauan.
@@ -855,7 +857,8 @@ dengan benar.
 -   **Estimasi:** 3--5 jam
 -   **Peran yang disarankan:** AI & World
 -   **Dependensi:** TP-012, TP-013, TP-017
--   **Status:** Not Started
+-   **Status:** In Progress
+-   **Catatan:** Baseline prototipe: detection radius 6, chase speed 3.5, dan interval scan 0.25 detik. Nilai ini perlu diuji dan diseimbangkan.
 
 **Tujuan:** Membuat Predator menjadi ancaman utama bagi Player.
 
@@ -888,7 +891,8 @@ aturan ukuran.
 -   **Estimasi:** 3--4 jam
 -   **Peran yang disarankan:** AI & World
 -   **Dependensi:** TP-010, TP-008, TP-018
--   **Status:** Not Started
+-   **Status:** Done
+-   **Catatan:** Baseline prototipe: 8 ikan awal, batas 16, interval 2.5 detik, dan bobot Small/Medium/Predator 60/30/10. Uji Play Mode mengonfirmasi ikan awal dan spawn berkala dari prefab yang dikonfigurasi; batas jumlah serta area spawn dijaga oleh guard jumlah dan pemeriksaan collider. Nilai spawn perlu diuji dan disepakati tim.
 
 **Tujuan:** Menghasilkan ikan secara otomatis di dalam arena.
 
