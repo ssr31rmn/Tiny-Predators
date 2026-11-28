@@ -10,6 +10,18 @@ public class PlayerController : MonoBehaviour
     private Rigidbody2D rigidbody2D;
 
     public int SizeLevel => sizeLevel;
+    public bool IsAlive { get; private set; } = true;
+
+    public void IncreaseSizeLevel()
+    {
+        sizeLevel++;
+    }
+
+    public void Die()
+    {
+        IsAlive = false;
+        enabled = false;
+    }
 
     private void Awake()
     {
@@ -22,6 +34,11 @@ public class PlayerController : MonoBehaviour
 
     private void Update()
     {
+        if (!IsAlive)
+        {
+            return;
+        }
+
         float horizontal =
             Input.GetKey(KeyCode.A) ? -1f :
             Input.GetKey(KeyCode.D) ? 1f :

@@ -14,6 +14,9 @@ GameObject:
   - component: {fileID: 4964171954263463790}
   - component: {fileID: 432479304983620071}
   - component: {fileID: 6102000000000000001}
+  - component: {fileID: 6102000000000000002}
+  - component: {fileID: 6102000000000000003}
+  - component: {fileID: 6102000000000000004}
   m_Layer: 0
   m_Name: Player
   m_TagString: Untagged
@@ -186,3 +189,41 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4f2dd4b6a7c64b6d8a3ed0dbe31ad511, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::FishInteractionDetector
+--- !u!114 &6102000000000000002
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7672292416717120991}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 3aa8fdd3d2a44e8aa1e2f4cd5c16f7b9, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::PlayerGrowth
+  growthPointsPerLevel: 3
+  maximumSizeLevel: 5
+--- !u!114 &6102000000000000003
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7672292416717120991}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5cf7b1cf52bc4adba3f3a6e9432a3c81, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::ScoreManager
+--- !u!114 &6102000000000000004
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7672292416717120991}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 93d2e2f50d3a4f23acb6e5c7d91f4028, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::PlayerHealth

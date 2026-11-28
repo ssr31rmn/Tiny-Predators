@@ -687,7 +687,8 @@ oleh beberapa jenis pemangsa.
 -   **Estimasi:** 3--4 jam
 -   **Peran yang disarankan:** Gameplay
 -   **Dependensi:** TP-014
--   **Status:** Not Started
+-   **Status:** Done
+-   **Catatan:** `PlayerGrowth` menyediakan pertumbuhan gameplay terpisah dari skala visual. Nilai baseline adalah 3 growth point per level dan level maksimum 5; kontribusi berdasarkan `Fish.SizeLevel`. Nilai ini masih dapat diubah saat balancing.
 
 **Tujuan:** Meningkatkan ukuran gameplay Player setelah berhasil memakan
 ikan yang sesuai.
@@ -723,7 +724,8 @@ tetap masuk akal.
 -   **Estimasi:** 1--2 jam
 -   **Peran yang disarankan:** Gameplay
 -   **Dependensi:** TP-014
--   **Status:** Not Started
+-   **Status:** Done
+-   **Catatan:** `ScoreManager` menyimpan skor sesi dan menerima skor dari event `FishConsumed` melalui `Fish.ScoreValue`. Nilai skor tidak memengaruhi pertumbuhan dan kontak berulang dicegah oleh `Fish.IsConsumed`.
 
 **Tujuan:** Memberikan skor ketika entitas berhasil memakan target.
 
@@ -750,7 +752,8 @@ permainan.
 -   **Estimasi:** 2--3 jam
 -   **Peran yang disarankan:** Gameplay
 -   **Dependensi:** TP-013, TP-011
--   **Status:** Not Started
+-   **Status:** Done
+-   **Catatan:** `PlayerHealth` memproses kematian satu kali saat ikan berukuran lebih besar terdeteksi, menonaktifkan kontrol Player, menghentikan Rigidbody, dan memicu event `PlayerDied`. Ikan kecil dan ukuran sama tidak memicu kematian.
 
 **Tujuan:** Mengakhiri sesi ketika Player dimakan entitas yang lebih
 besar.
