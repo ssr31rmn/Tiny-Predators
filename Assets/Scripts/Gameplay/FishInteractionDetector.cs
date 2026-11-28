@@ -4,6 +4,7 @@ using UnityEngine;
 public class FishInteractionDetector : MonoBehaviour
 {
     public event System.Action<Fish> FishConsumed;
+    public event System.Action<Fish> LargerFishDetected;
 
     public enum SizeRelation
     {
@@ -88,10 +89,16 @@ public class FishInteractionDetector : MonoBehaviour
         {
             detectedFish = fish;
 
-            if (RelationToDetectedFish == SizeRelation.PlayerCanEat && fish.TryConsume())
+            SizeRelation relation = RelationToDetectedFish;
+
+            if (relation == SizeRelation.PlayerCanEat && fish.TryConsume())
             {
                 detectedFish = null;
                 FishConsumed?.Invoke(fish);
+            }
+            else if (relation == SizeRelation.FishIsLarger)
+            {
+                LargerFishDetected?.Invoke(fish);
             }
         }
     }

@@ -5,12 +5,25 @@ using UnityEngine;
 public class FishMovement : MonoBehaviour
 {
     [SerializeField, Min(0.1f)] private float directionChangeInterval = 2.5f;
+    [SerializeField, Min(0f)] private float fleeDetectionRadius = 3.5f;
+    [SerializeField, Min(0f)] private float fleeSpeed = 2.5f;
+    [SerializeField, Min(0.05f)] private float threatCheckInterval = 0.25f;
     [SerializeField] private SpriteRenderer spriteRenderer;
 
     private Rigidbody2D rigidbody2D;
     private Fish fish;
     private Vector2 moveDirection;
+    private Vector2 fleeDirection;
+    private Vector2 overrideDirection;
+    private float overrideSpeed;
     private float nextDirectionChangeTime;
+    private float nextThreatCheckTime;
+    private bool isFleeing;
+    private bool hasMovementOverride;
+    private readonly Collider2D[] nearbyColliders = new Collider2D[32];
+
+    public bool IsFleeing => isFleeing;
+    public bool HasMovementOverride => hasMovementOverride;
 
     private void Awake()
     {
@@ -28,18 +41,49 @@ public class FishMovement : MonoBehaviour
     private void OnEnable()
     {
         nextDirectionChangeTime = Time.time + directionChangeInterval;
+        nextThreatCheckTime = Time.time;
     }
 
     private void FixedUpdate()
     {
-        if (Time.time >= nextDirectionChangeTime)
+        if (fish.Category == FishCategory.SmallFish && Time.time >= nextThreatCheckTime)
+        {
+            RefreshThreatResponse();
+            nextThreatCheckTime = Time.time + threatCheckInterval;
+        }
+
+        if (!isFleeing && Time.time >= nextDirectionChangeTime)
         {
             ChooseRandomDirection();
             nextDirectionChangeTime = Time.time + directionChangeInterval;
         }
 
-        rigidbody2D.linearVelocity = moveDirection * fish.MoveSpeed;
-        UpdateFacingDirection();
+        Vector2 direction = isFleeing
+            ? fleeDirection
+            : hasMovementOverride ? overrideDirection : moveDirection;
+        float speed = isFleeing
+            ? fleeSpeed
+            : hasMovementOverride ? overrideSpeed : fish.MoveSpeed;
+        rigidbody2D.linearVelocity = direction * speed;
+        UpdateFacingDirection(direction);
+    }
+
+    public void SetMovementOverride(Vector2 direction, float speed)
+    {
+        if (direction.sqrMagnitude < 0.0001f || speed <= 0f)
+        {
+            ClearMovementOverride();
+            return;
+        }
+
+        overrideDirection = direction.normalized;
+        overrideSpeed = speed;
+        hasMovementOverride = true;
+    }
+
+    public void ClearMovementOverride()
+    {
+        hasMovementOverride = false;
     }
 
     private void OnCollisionEnter2D(Collision2D collision)
@@ -50,9 +94,90 @@ public class FishMovement : MonoBehaviour
         }
 
         Vector2 normal = collision.GetContact(0).normal;
-        moveDirection = Vector2.Reflect(moveDirection, normal).normalized;
+        if (isFleeing)
+        {
+            fleeDirection = Vector2.Reflect(fleeDirection, normal).normalized;
+        }
+        else if (hasMovementOverride)
+        {
+            overrideDirection = Vector2.Reflect(overrideDirection, normal).normalized;
+        }
+        else
+        {
+            moveDirection = Vector2.Reflect(moveDirection, normal).normalized;
+        }
+
         nextDirectionChangeTime = Time.time + directionChangeInterval;
-        UpdateFacingDirection();
+        Vector2 direction = isFleeing
+            ? fleeDirection
+            : hasMovementOverride ? overrideDirection : moveDirection;
+        UpdateFacingDirection(direction);
+    }
+
+    private void RefreshThreatResponse()
+    {
+        ContactFilter2D contactFilter = new ContactFilter2D();
+        contactFilter.SetLayerMask(Physics2D.DefaultRaycastLayers);
+        contactFilter.useTriggers = true;
+        int colliderCount = Physics2D.OverlapCircle(
+            transform.position,
+            fleeDetectionRadius,
+            contactFilter,
+            nearbyColliders);
+
+        float nearestThreatDistanceSquared = float.PositiveInfinity;
+        Vector2 nearestThreatPosition = Vector2.zero;
+
+        for (int i = 0; i < colliderCount; i++)
+        {
+            Collider2D nearbyCollider = nearbyColliders[i];
+            PlayerController nearbyPlayer = nearbyCollider.GetComponentInParent<PlayerController>();
+
+            if (nearbyPlayer != null
+                && nearbyPlayer.IsAlive
+                && FishSizeRules.CanEat(nearbyPlayer.SizeLevel, fish.SizeLevel))
+            {
+                UpdateNearestThreat(
+                    nearbyPlayer.transform.position,
+                    ref nearestThreatDistanceSquared,
+                    ref nearestThreatPosition);
+                continue;
+            }
+
+            Fish nearbyFish = nearbyCollider.GetComponentInParent<Fish>();
+            if (nearbyFish != null
+                && nearbyFish != fish
+                && FishSizeRules.CanEat(nearbyFish.SizeLevel, fish.SizeLevel))
+            {
+                UpdateNearestThreat(
+                    nearbyFish.transform.position,
+                    ref nearestThreatDistanceSquared,
+                    ref nearestThreatPosition);
+            }
+        }
+
+        isFleeing = !float.IsPositiveInfinity(nearestThreatDistanceSquared);
+        if (isFleeing)
+        {
+            fleeDirection = ((Vector2)transform.position - nearestThreatPosition).normalized;
+            if (fleeDirection.sqrMagnitude < 0.01f)
+            {
+                fleeDirection = Random.insideUnitCircle.normalized;
+            }
+        }
+    }
+
+    private void UpdateNearestThreat(
+        Vector2 threatPosition,
+        ref float nearestDistanceSquared,
+        ref Vector2 nearestPosition)
+    {
+        float distanceSquared = ((Vector2)transform.position - threatPosition).sqrMagnitude;
+        if (distanceSquared < nearestDistanceSquared)
+        {
+            nearestDistanceSquared = distanceSquared;
+            nearestPosition = threatPosition;
+        }
     }
 
     private void ChooseRandomDirection()
@@ -65,18 +190,18 @@ public class FishMovement : MonoBehaviour
         }
     }
 
-    private void UpdateFacingDirection()
+    private void UpdateFacingDirection(Vector2 direction)
     {
         if (spriteRenderer == null)
         {
             return;
         }
 
-        if (moveDirection.x < -0.01f)
+        if (direction.x < -0.01f)
         {
             spriteRenderer.flipX = true;
         }
-        else if (moveDirection.x > 0.01f)
+        else if (direction.x > 0.01f)
         {
             spriteRenderer.flipX = false;
         }
